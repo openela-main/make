@@ -1,0 +1,27 @@
+diff -Nrup a/tests/run_make_tests.pl b/tests/run_make_tests.pl
+--- a/tests/run_make_tests.pl   2016-04-04 01:38:37.000000000 -0400
++++ b/tests/run_make_tests.pl   2018-03-19 00:46:11.329131847 -0400
+@@ -58,8 +58,8 @@ if ($^O eq 'VMS')
+   *CORE::GLOBAL::rmdir = \&vms_rmdir;
+ }
+
+-require "test_driver.pl";
+-require "config-flags.pm";
++require "./test_driver.pl";
++require "./config-flags.pm";
+
+ # Some target systems might not have the POSIX module...
+ $has_POSIX = eval { require "POSIX.pm" };
+diff -Nrup a/tests/test_driver.pl b/tests/test_driver.pl
+--- a/tests/test_driver.pl      2018-03-19 00:41:11.982406829 -0400
++++ b/tests/test_driver.pl      2018-03-19 00:54:12.484794671 -0400
+@@ -165,7 +165,7 @@ sub toplevel
+   $detail = 0;                # detailed verbosity
+   $keep = 0;                  # keep temp files around
+   $workdir = "work";          # The directory where the test will start running
+-  $scriptdir = "scripts";     # The directory where we find the test scripts
++  $scriptdir = "./scripts";     # The directory where we find the test scripts
+   $tmpfilesuffix = "t";       # the suffix used on tmpfiles
+   $default_output_stack_level = 0;  # used by attach_default_output, etc.
+   $default_input_stack_level = 0;   # used by attach_default_input, etc.
+
